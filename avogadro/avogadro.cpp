@@ -3,6 +3,9 @@
   This source code is released under the 3-Clause BSD License, (see "LICENSE").
 ******************************************************************************/
 
+#include <cstring>
+#include <iostream>
+
 #include <QtGui/QOffscreenSurface>
 #include <QtGui/QOpenGLContext>
 #include <QtGui/QSurfaceFormat>
@@ -31,6 +34,8 @@
 #include "avogadroappconfig.h"
 #include "crashreporter.h"
 #include "mainwindow.h"
+#include "avogadroappconfig.h"
+#include <avogadro/core/version.h>
 
 #ifdef Q_OS_MAC
 // void removeMacSpecificMenuItems();
@@ -172,6 +177,13 @@ void removeAppImageLibraryPath()
 
 int main(int argc, char* argv[])
 {
+  if (argc == 2 && strcmp(argv[1], "--version") == 0) {
+    std::cout << "AvogadroApp Version: " << AvogadroApp_VERSION << "\n";
+    std::cout << "AvogadroLibs Version: " << Avogadro::version() << "\n";
+    std::cout << "Qt Version: " << qVersion() << "\n";
+    return 0;
+  }
+
 #ifdef Q_OS_LINUX
   // AppRun puts the AppImage's bundled libraries on LD_LIBRARY_PATH. Every
   // child process (xdg-open and the browser, obabel, plugin scripts, user
