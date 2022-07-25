@@ -2594,7 +2594,7 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
 
   QString ident = QString::fromStdString(writer->identifier());
 
-  // Figure out what molecule willl be saved, perform conversion if necessary.
+  // Figure out what molecule will be saved, perform conversion if necessary.
   // Resolved before anything is allocated below: BackgroundFileFormat takes
   // ownership of the writer, so bailing out after it is constructed would
   // both double delete the writer and leave the write state half set up.
