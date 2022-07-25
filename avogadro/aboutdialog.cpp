@@ -82,9 +82,6 @@ void AboutDialog::changeEvent(QEvent* e)
   }
 }
 
-AboutDialog::~AboutDialog()
-{
-  delete m_ui;
-}
+AboutDialog::~AboutDialog() = default;
 
 } /* namespace Avogadro */
