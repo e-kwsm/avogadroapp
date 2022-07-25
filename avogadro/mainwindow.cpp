@@ -2259,7 +2259,7 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
 
   QString ident = QString::fromStdString(writer->identifier());
 
-  // Figure out what molecule willl be saved, perform conversion if necessary.
+  // Figure out what molecule will be saved, perform conversion if necessary.
   QObject* molObj = m_moleculeModel->activeMolecule();
 
   if (!molObj) {
