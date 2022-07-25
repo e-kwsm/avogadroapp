@@ -6,6 +6,7 @@
 #ifndef AVOGADRO_ABOUTDIALOG_H
 #define AVOGADRO_ABOUTDIALOG_H
 
+#include <memory>
 #include <QtWidgets/QDialog>
 
 namespace Ui {
@@ -27,7 +28,7 @@ public:
   void changeEvent(QEvent* event) override;
 
 private:
-  Ui::AboutDialog* m_ui;
+  std::unique_ptr<Ui::AboutDialog> m_ui;
 };
 
 } // End Avogadro namespace
