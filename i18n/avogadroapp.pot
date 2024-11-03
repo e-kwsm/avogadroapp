@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.99.0\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2024-10-13 02:35+0000\n"
+"POT-Creation-Date: 2024-11-03 02:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,7 +119,7 @@ msgid "Open chemical file"
 msgstr ""
 
 #: mainwindow.cpp:798 mainwindow.cpp:822 mainwindow.cpp:1383
-#: mainwindow.cpp:2532
+#: mainwindow.cpp:2534
 msgid "Cannot open file"
 msgstr ""
 
@@ -519,47 +519,47 @@ msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr ""
 
-#: mainwindow.cpp:2409
+#: mainwindow.cpp:2411
 msgid "Network Download Failed"
 msgstr ""
 
-#: mainwindow.cpp:2410
+#: mainwindow.cpp:2412
 msgid "Network timeout or other error."
 msgstr ""
 
-#: mainwindow.cpp:2449
+#: mainwindow.cpp:2451
 #, qt-format
 msgid "Your version: %1"
 msgstr ""
 
-#: mainwindow.cpp:2450
+#: mainwindow.cpp:2452
 #, qt-format
 msgid "New version: %1"
 msgstr ""
 
-#: mainwindow.cpp:2452
+#: mainwindow.cpp:2454
 msgid "An update is available, do you want to download it now?\n"
 msgstr ""
 
-#: mainwindow.cpp:2454
+#: mainwindow.cpp:2456
 msgid "Version Update"
 msgstr ""
 
-#: mainwindow.cpp:2512
+#: mainwindow.cpp:2514
 #, qt-format
 msgid "Error while loading the “%1” file format."
 msgstr ""
 
-#: mainwindow.cpp:2528
+#: mainwindow.cpp:2530
 msgid "Select file format"
 msgstr ""
 
-#: mainwindow.cpp:2533 mainwindow.cpp:2544
+#: mainwindow.cpp:2535 mainwindow.cpp:2546
 #, qt-format
 msgid "Avogadro cannot open “%1”."
 msgstr ""
 
-#: mainwindow.cpp:2543
+#: mainwindow.cpp:2545
 msgid "Cannot open files"
 msgstr ""
 
