@@ -1163,9 +1163,6 @@ msgstr ""
 #~ msgid "&Full Screen Mode"
 #~ msgstr "フルスクリーンモード(&F)"
 
-#~ msgid "Esc"
-#~ msgstr "Esc"
-
 #~ msgid "Close View"
 #~ msgstr "ビューを閉じる"
 
@@ -1213,12 +1210,6 @@ msgstr ""
 
 #~ msgid "Reset Display Types"
 #~ msgstr "表示方式をリセット"
-
-#~ msgid "SMILES"
-#~ msgstr "SMILES"
-
-#~ msgid "InChI"
-#~ msgstr "InChI"
 
 #~ msgid "IUPAC InChI identifier"
 #~ msgstr "IUPAC 国際化学識別子(InChI)"
@@ -1275,9 +1266,6 @@ msgstr ""
 #~ msgid "&Minimize"
 #~ msgstr "最小化(&M)"
 
-#~ msgid "Ctrl+M"
-#~ msgstr "Ctrl+M"
-
 #~ msgid "&Zoom"
 #~ msgstr "ズーム(&Z)"
 
@@ -1287,28 +1275,14 @@ msgstr ""
 #~ msgid "&Tool Settings..."
 #~ msgstr "ツール設定(&T)"
 
-#~ msgctxt "Tool Settings shortcut"
-#~ msgid "Ctrl+T"
-#~ msgstr "Ctrl+T"
-
 #~ msgid "&Display Settings..."
 #~ msgstr "表示設定(&D)"
-
-#~ msgctxt "Display Settings shortcut"
-#~ msgid "Ctrl+D"
-#~ msgstr "Ctrl+D"
 
 #~ msgid "Common molecule formats"
 #~ msgstr "一般的な分子ファイル形式"
 
-#~ msgid "CML"
-#~ msgstr "CML"
-
 #~ msgid "Computational Chemistry Output"
 #~ msgstr "計算化学アウトプット"
-
-#~ msgid "Crystallographic Interchange CIF"
-#~ msgstr "Crystallographic Interchange CIF"
 
 #~ msgid "GAMESS-US Output"
 #~ msgstr "GAMESS-US アウトプット"
