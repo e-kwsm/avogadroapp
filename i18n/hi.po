@@ -29,8 +29,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, versionLabel)
 #: aboutdialog.cpp:33:3
 #, fuzzy
-#| msgctxt "%1 is the Git revision number."
-#| msgid "(Git revision: %1)"
 msgid "Version:"
 msgstr "संशोधन:"
 
@@ -44,8 +42,6 @@ msgstr "अवोगैड्रो पुस्तकालय संस्क�
 #. i18n: ectx: property (text), widget (QLabel, qtVersionLabel)
 #: aboutdialog.cpp:35:15
 #, fuzzy
-#| msgctxt "%1 is the Git revision number."
-#| msgid "(Git revision: %1)"
 msgid "Qt Version:"
 msgstr "Qt संशोधन:"
 
