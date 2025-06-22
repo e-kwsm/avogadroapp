@@ -30,7 +30,6 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, versionLabel)
 #: aboutdialog.cpp:32:3
 #, fuzzy
-#| msgid "Version Update"
 msgid "Version:"
 msgstr "Phiên bản:"
 
