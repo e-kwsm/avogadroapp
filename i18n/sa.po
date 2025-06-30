@@ -56,9 +56,8 @@ msgid "No file name set in BackgroundFileFormat!"
 msgstr ""
 
 #: mainwindow.cpp:327
-#, fuzzy
 msgid "Ready…"
-msgstr "सज्ज :.."
+msgstr ""
 
 #: mainwindow.cpp:409
 msgid "Tool"
