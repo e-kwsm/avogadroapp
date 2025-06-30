@@ -52,9 +52,8 @@ msgid "No molecule set in BackgroundFileFormat!"
 msgstr "Tiada molekul yang ditetapkan di BackgroundFileFormat!"
 
 #: backgroundfileformat.cpp:32 backgroundfileformat.cpp:57
-#, fuzzy
 msgid "No file format set in BackgroundFileFormat!"
-msgstr "Tiada molekul yang ditetapkan di BackgroundFileFormat!"
+msgstr ""
 
 #: backgroundfileformat.cpp:35 backgroundfileformat.cpp:60
 msgid "No file name set in BackgroundFileFormat!"
