@@ -85,14 +85,12 @@ msgstr "Tavoloj"
 
 #: mainwindow.cpp:506
 #, fuzzy
-#| msgid "File"
 msgctxt "File toolbar"
 msgid "File"
 msgstr "Dosiero"
 
 #: mainwindow.cpp:511
 #, fuzzy
-#| msgid "Tools"
 msgctxt "Tools toolbar"
 msgid "Tools"
 msgstr "Iloj"
