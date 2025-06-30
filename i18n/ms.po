@@ -674,7 +674,6 @@ msgstr "OK"
 #. i18n: file: mainwindow.ui:85
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+O"
 msgctxt "File | Open"
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
@@ -687,7 +686,6 @@ msgstr "B&uka"
 #. i18n: file: mainwindow.ui:98
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+Q"
 msgctxt "File | Quit"
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
@@ -705,7 +703,6 @@ msgstr "K&osongkan Terkini"
 #. i18n: file: mainwindow.ui:124
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+N"
 msgctxt "File | New"
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
@@ -713,7 +710,6 @@ msgstr "Ctrl+N"
 #. i18n: file: mainwindow.ui:137
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+W"
 msgctxt "File | Close"
 msgid "Ctrl+W"
 msgstr "Ctrl+W"
@@ -721,7 +717,6 @@ msgstr "Ctrl+W"
 #. i18n: file: mainwindow.ui:150
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+S"
 msgctxt "File | Save"
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
@@ -729,7 +724,6 @@ msgstr "Ctrl+S"
 #. i18n: file: mainwindow.ui:163
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+Shift+S"
 msgctxt "File | Save As"
 msgid "Ctrl+Shift+S"
 msgstr "Ctrl+Shift+S"
@@ -748,7 +742,6 @@ msgstr "Tetapkan Warna &Latar Belakang"
 #. i18n: file: mainwindow.ui:197
 #. i18n: ectx: property (shortcut), widget (QMenu, menuSelect)
 #, fuzzy
-#| msgid "Ctrl+Z"
 msgctxt "Undo"
 msgid "Ctrl+Z"
 msgstr "Ctrl+Z"
