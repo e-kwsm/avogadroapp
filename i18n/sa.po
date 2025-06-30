@@ -380,9 +380,8 @@ msgid "&Export"
 msgstr ""
 
 #: mainwindow.cpp:2021
-#, fuzzy
 msgid "&Molecule…"
-msgstr "अणु…"
+msgstr ""
 
 #: mainwindow.cpp:2028
 msgid "Export Molecule…"
