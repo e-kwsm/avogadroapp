@@ -143,7 +143,6 @@ msgstr "قەۋەت"
 
 #: mainwindow.cpp:797
 #, fuzzy
-#| msgid "File"
 msgctxt "File toolbar"
 msgid "File"
 msgstr "ھۆججەت"
