@@ -37,8 +37,9 @@ msgstr "అవగాడ్రో లైబ్రరీ వెర్షన్"
 #. i18n: file: aboutdialog.ui:164
 #. i18n: ectx: property (text), widget (QLabel, qtVersionLabel)
 #: aboutdialog.cpp:29:15
+#, fuzzy
 msgid "Qt Version:"
-msgstr ""
+msgstr "Qt వెర్షన్:"
 
 #. i18n: file: aboutdialog.ui:181
 #. i18n: ectx: property (text), widget (QLabel, sslVersionLabel)
