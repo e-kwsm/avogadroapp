@@ -1158,9 +1158,11 @@ void MainWindow::backgroundReaderFinished()
       }
     }
 
-    statusBar()->showMessage(tr("Molecule loaded (%1 atoms, %2 bonds)")
-                               .arg(m_molecule->atomCount())
-                               .arg(m_molecule->bondCount()),
+    const auto atomCount = m_molecule->atomCount();
+    const auto bondCount = m_molecule->bondCount();
+    auto a = tr("%1 atom(s)", "", atomCount).arg(atomCount);
+    auto b = tr("%1 bond(s)", "", bondCount).arg(bondCount);
+    statusBar()->showMessage(tr("Molecule loaded (%s, %s)").arg(a).arg(b),
                              5000);
   } else {
     QMessageBox::critical(this, tr("File error"),
