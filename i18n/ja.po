@@ -80,7 +80,7 @@ msgstr "設定の表示"
 
 #: mainwindow.cpp:464
 msgid "Files"
-msgstr ""
+msgstr "ファイル"
 
 #: mainwindow.cpp:475
 msgid "Layers"
