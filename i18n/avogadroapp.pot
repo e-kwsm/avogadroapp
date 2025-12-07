@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Avogadro 1.102.1\n"
 "Report-Msgid-Bugs-To: avogadro-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2025-11-12 22:54+0000\n"
+"POT-Creation-Date: 2025-12-07 03:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,7 +123,7 @@ msgid "Open chemical file"
 msgstr ""
 
 #: mainwindow.cpp:921 mainwindow.cpp:945 mainwindow.cpp:1635
-#: mainwindow.cpp:2869
+#: mainwindow.cpp:2878
 msgid "Cannot open file"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgstr ""
 
 #. i18n: file: mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: mainwindow.cpp:1604 mainwindow.cpp:1721 mainwindow.cpp:2612 :36
+#: mainwindow.cpp:1604 mainwindow.cpp:1721 mainwindow.cpp:2621 :36
 msgid "Avogadro"
 msgstr ""
 
@@ -308,43 +308,43 @@ msgid ""
 "with “%2”"
 msgstr ""
 
-#: mainwindow.cpp:2041
+#: mainwindow.cpp:2044
 #, qt-format
 msgid "&Undo %1"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:194
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2044 mainwindow.cpp:2306 :120
+#: mainwindow.cpp:2047 mainwindow.cpp:2315 :120
 msgid "&Undo"
 msgstr ""
 
-#: mainwindow.cpp:2049
+#: mainwindow.cpp:2052
 #, qt-format
 msgid "&Redo %1"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:206
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2052 mainwindow.cpp:2314 :126
+#: mainwindow.cpp:2055 mainwindow.cpp:2323 :126
 msgid "&Redo"
 msgstr ""
 
-#: mainwindow.cpp:2174
+#: mainwindow.cpp:2177
 msgid "&Testing"
 msgstr ""
 
-#: mainwindow.cpp:2176
+#: mainwindow.cpp:2179
 msgid "&Record Test…"
 msgstr ""
 
-#: mainwindow.cpp:2179
+#: mainwindow.cpp:2182
 msgid "&Play Test…"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:32
 #. i18n: ectx: property (title), widget (QMenu, menuFile)
-#: mainwindow.cpp:2188 menubuilder.cpp:100 :39
+#: mainwindow.cpp:2191 menubuilder.cpp:100 :39
 msgid "&File"
 msgstr ""
 
@@ -352,13 +352,13 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
 #. i18n: file: mainwindow.ui:129
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2190 :78 rc.cpp:84
+#: mainwindow.cpp:2193 :78 rc.cpp:84
 msgid "&New"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:82
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2201 :54
+#: mainwindow.cpp:2204 :54
 msgid "&Open…"
 msgstr ""
 
@@ -366,7 +366,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
 #. i18n: file: mainwindow.ui:142
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2213 :87 rc.cpp:93
+#: mainwindow.cpp:2216 :87 rc.cpp:93
 msgid "&Close"
 msgstr ""
 
@@ -374,210 +374,214 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
 #. i18n: file: mainwindow.ui:155
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2226 :96 rc.cpp:102
+#: mainwindow.cpp:2229 :96 rc.cpp:102
 msgid "&Save"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:160
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2238 :105
+#: mainwindow.cpp:2241 :105
 msgid "Save &As…"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:328
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2251 :198
+#: mainwindow.cpp:2254 :198
 msgid "&Export"
 msgstr ""
 
-#: mainwindow.cpp:2252
+#: mainwindow.cpp:2255
 msgid "&Molecule…"
 msgstr ""
 
-#: mainwindow.cpp:2259
+#: mainwindow.cpp:2262
 msgid "Export Molecule…"
 msgstr ""
 
-#: mainwindow.cpp:2266
+#: mainwindow.cpp:2269
 msgid "&Graphics…"
+msgstr ""
+
+#: mainwindow.cpp:2276
+msgid "Export Graphics…"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:95
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
 #. i18n: file: mainwindow.ui:106
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2275 :63 rc.cpp:69
+#: mainwindow.cpp:2284 :63 rc.cpp:69
 msgid "&Quit"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:318
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2285 :192
+#: mainwindow.cpp:2294 :192
 msgid "Open Recent"
 msgstr ""
 
-#: mainwindow.cpp:2299
+#: mainwindow.cpp:2308
 msgid "No recent files"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:59
 #. i18n: ectx: property (title), widget (QMenu, menuEdit)
-#: mainwindow.cpp:2305 menubuilder.cpp:100 :48
+#: mainwindow.cpp:2314 menubuilder.cpp:100 :48
 msgid "&Edit"
 msgstr ""
 
-#: mainwindow.cpp:2322
+#: mainwindow.cpp:2331
 msgid "&Copy Graphics"
 msgstr ""
 
-#: mainwindow.cpp:2326
+#: mainwindow.cpp:2335
 msgid "Ctrl+Alt+C"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:54
 #. i18n: ectx: property (title), widget (QMenu, menuView)
-#: mainwindow.cpp:2339 menubuilder.cpp:100 :45
+#: mainwindow.cpp:2348 menubuilder.cpp:100 :45
 msgid "&View"
 msgstr ""
 
-#: mainwindow.cpp:2340
+#: mainwindow.cpp:2349
 msgid "Set Background Color…"
 msgstr ""
 
-#: mainwindow.cpp:2344
+#: mainwindow.cpp:2353
 msgid "Rendering…"
 msgstr ""
 
-#: mainwindow.cpp:2352
+#: mainwindow.cpp:2361
 msgid "Projection"
 msgstr ""
 
-#: mainwindow.cpp:2353
+#: mainwindow.cpp:2362
 msgid "Perspective"
 msgstr ""
 
-#: mainwindow.cpp:2360
+#: mainwindow.cpp:2369
 msgid "Orthographic"
 msgstr ""
 
-#: mainwindow.cpp:2379
+#: mainwindow.cpp:2388
 msgid "&Extensions"
 msgstr ""
 
-#: mainwindow.cpp:2381
+#: mainwindow.cpp:2390
 msgid "User Interface Language…"
 msgstr ""
 
-#: mainwindow.cpp:2385
+#: mainwindow.cpp:2394
 msgid "&Periodic Table…"
 msgstr ""
 
-#: mainwindow.cpp:2391 menubuilder.cpp:104
+#: mainwindow.cpp:2400 menubuilder.cpp:104
 msgid "&Help"
 msgstr ""
 
 #. i18n: file: mainwindow.ui:182
 #. i18n: ectx: property (text), widget (QMenu, menuSelect)
-#: mainwindow.cpp:2392 :117
+#: mainwindow.cpp:2401 :117
 msgid "&About"
 msgstr ""
 
-#: mainwindow.cpp:2397
+#: mainwindow.cpp:2406
 msgid "&Discussion Forum"
 msgstr ""
 
-#: mainwindow.cpp:2401
+#: mainwindow.cpp:2410
 msgid "&Avogadro Website"
 msgstr ""
 
-#: mainwindow.cpp:2405
+#: mainwindow.cpp:2414
 msgid "&Report a Bug"
 msgstr ""
 
-#: mainwindow.cpp:2409
+#: mainwindow.cpp:2418
 msgid "&Suggest a Feature"
 msgstr ""
 
-#: mainwindow.cpp:2443
+#: mainwindow.cpp:2452
 msgid "untitled"
 msgstr ""
 
-#: mainwindow.cpp:2473
+#: mainwindow.cpp:2482
 msgid "System Language"
 msgstr ""
 
-#: mainwindow.cpp:2481
+#: mainwindow.cpp:2490
 msgid "Language"
 msgstr ""
 
-#: mainwindow.cpp:2481
+#: mainwindow.cpp:2490
 msgid "User Interface Language:"
 msgstr ""
 
-#: mainwindow.cpp:2597
+#: mainwindow.cpp:2606
 #, qt-format
 msgid "All supported formats (%1);;All files (*);;"
 msgstr ""
 
-#: mainwindow.cpp:2613
+#: mainwindow.cpp:2622
 msgid "Do you want to save the changes to the document?"
 msgstr ""
 
-#: mainwindow.cpp:2621
+#: mainwindow.cpp:2630
 msgid "Your changes will be lost if you don't save them."
 msgstr ""
 
-#: mainwindow.cpp:2626
+#: mainwindow.cpp:2635
 msgctxt "Save"
 msgid "Ctrl+S"
 msgstr ""
 
-#: mainwindow.cpp:2628
+#: mainwindow.cpp:2637
 msgctxt "Discard"
 msgid "Ctrl+D"
 msgstr ""
 
-#: mainwindow.cpp:2715
+#: mainwindow.cpp:2724
 msgid "Network Download Failed"
 msgstr ""
 
-#: mainwindow.cpp:2716
+#: mainwindow.cpp:2725
 msgid "Network timeout or other error."
 msgstr ""
 
-#: mainwindow.cpp:2786
+#: mainwindow.cpp:2795
 #, qt-format
 msgid "Your version: %1"
 msgstr ""
 
-#: mainwindow.cpp:2787
+#: mainwindow.cpp:2796
 #, qt-format
 msgid "New version: %1"
 msgstr ""
 
-#: mainwindow.cpp:2789
+#: mainwindow.cpp:2798
 msgid "An update is available, do you want to download it now?\n"
 msgstr ""
 
-#: mainwindow.cpp:2791
+#: mainwindow.cpp:2800
 msgid "Version Update"
 msgstr ""
 
-#: mainwindow.cpp:2849
+#: mainwindow.cpp:2858
 #, qt-format
 msgid "Error while loading the “%1” file format."
 msgstr ""
 
-#: mainwindow.cpp:2865
+#: mainwindow.cpp:2874
 msgid "Select file format"
 msgstr ""
 
-#: mainwindow.cpp:2870 mainwindow.cpp:2881
+#: mainwindow.cpp:2879 mainwindow.cpp:2890
 #, qt-format
 msgid "Avogadro cannot open “%1”."
 msgstr ""
 
-#: mainwindow.cpp:2880
+#: mainwindow.cpp:2889
 msgid "Cannot open files"
 msgstr ""
 
