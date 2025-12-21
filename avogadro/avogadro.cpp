@@ -32,6 +32,8 @@
 #include "crashreporter.h"
 #include "mainwindow.h"
 
+#include <iostream>
+
 #ifdef Q_OS_MAC
 // void removeMacSpecificMenuItems();
 #endif
@@ -96,7 +98,10 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext& context,
   QString writableDocs =
     QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
   QFile outFile(writableDocs + "/avogadro2.log");
-  outFile.open(QIODevice::WriteOnly | QIODevice::Append);
+  if (!outFile.open(QIODevice::WriteOnly | QIODevice::Append)) {
+    std::cerr << "Failed to write log file" << std::endl;
+    return;
+  }
   QTextStream ts(&outFile);
   ts << message << Qt::endl;
 }
