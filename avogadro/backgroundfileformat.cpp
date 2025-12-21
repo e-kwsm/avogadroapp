@@ -11,6 +11,8 @@
 #include <QtCore/QTemporaryDir>
 #include <QtCore/QTextStream>
 
+#include <iostream>
+
 namespace Avogadro {
 
 BackgroundFileFormat::BackgroundFileFormat(Io::FileFormat* format,
@@ -56,11 +58,14 @@ void BackgroundFileFormat::read()
         // UTF-16, read the file and let QString handle decoding
         isUTF16 = true;
         file.close();
-        file.open(QIODevice::ReadOnly | QIODevice::Text);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+          std::cerr << "Failed to open background file" << std::endl;
+        } else {
 #if QT_VERSION < 0x060000
-        in.setCodec("UTF-16");
+          in.setCodec("UTF-16");
 #endif
-        text = in.readAll();
+          text = in.readAll();
+        }
         file.close();
       }
     }
