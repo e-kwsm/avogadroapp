@@ -10,6 +10,8 @@
 
 #include <avogadro/rendering/solidpipeline.h>
 
+#include <memory>
+
 namespace Ui {
 class RenderingDialog;
 }
@@ -44,7 +46,7 @@ protected slots:
   void closeButtonClicked();
 
 private:
-  Ui::RenderingDialog *m_ui;
+  std::unique_ptr<Ui::RenderingDialog> m_ui;
   SolidPipeline &m_solidPipeline;
 };
 
