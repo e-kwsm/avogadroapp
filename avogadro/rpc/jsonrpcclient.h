@@ -12,6 +12,8 @@
 #include <QtCore/QJsonObject>
 #include <QtCore/QObject>
 
+#include <memory>
+
 class QLocalSocket;
 
 namespace Avogadro::RPC {
@@ -64,7 +66,7 @@ signals:
 
 protected:
   unsigned int m_packetCounter;
-  QLocalSocket* m_socket;
+  std::unique_ptr<QLocalSocket> m_socket;
 };
 
 } // namespace Avogadro::RPC
