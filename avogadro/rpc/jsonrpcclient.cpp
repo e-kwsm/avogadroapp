@@ -44,8 +44,7 @@ bool JsonRpcClient::connectToServer(const QString& serverName_)
       return false;
     } else {
       m_socket->close();
-      delete m_socket;
-      m_socket = nullptr;
+      m_socket.reset();
     }
   }
 
