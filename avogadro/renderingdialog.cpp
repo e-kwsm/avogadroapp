@@ -71,10 +71,7 @@ RenderingDialog::RenderingDialog(QWidget* parent_, SolidPipeline& pipeline)
   connect(m_ui->closeButton, SIGNAL(clicked()), SLOT(closeButtonClicked()));
 }
 
-RenderingDialog::~RenderingDialog()
-{
-  delete m_ui;
-}
+RenderingDialog::~RenderingDialog() = default;
 
 bool RenderingDialog::aoEnabled()
 {
