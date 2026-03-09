@@ -1312,11 +1312,11 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
   m_threadedReader = std::make_unique<BackgroundFileFormat>(reader);
   if (m_fileReadMolecule)
     m_fileReadMolecule->deleteLater();
-  m_fileReadMolecule = new Molecule(this);
+  m_fileReadMolecule = std::make_unique<Molecule>(this);
   // make sure the filename is UTF-8 for serialization
   m_fileReadMolecule->setData("fileName", fileName.toStdString());
   m_threadedReader->moveToThread(m_fileReadThread.get());
-  m_threadedReader->setMolecule(m_fileReadMolecule);
+  m_threadedReader->setMolecule(m_fileReadMolecule.get());
   m_threadedReader->setFileName(fileName);
 
   // Setup a progress dialog in case file loading is slow
@@ -1386,7 +1386,7 @@ void MainWindow::backgroundReaderFinished()
 {
   QString fileName = m_threadedReader->fileName();
   if (m_progressDialog->wasCanceled()) {
-    delete m_fileReadMolecule;
+    m_fileReadMolecule.reset();
   } else if (m_threadedReader->success()) {
     const bool recovered = !fileName.isEmpty() && isAutosaveFile(fileName);
     if (recovered) {
@@ -1409,7 +1409,7 @@ void MainWindow::backgroundReaderFinished()
       m_fileReadMolecule->setData("fileName", Core::Variant());
     }
 
-    setMolecule(m_fileReadMolecule);
+    setMolecule(m_fileReadMolecule.get());
 
     // check if the modelView is set
     if (m_fileReadMolecule->hasData("modelView")) {
@@ -1453,13 +1453,13 @@ void MainWindow::backgroundReaderFinished()
                               .arg(fileName)
                               .arg(m_threadedReader->error()));
     }
-    delete m_fileReadMolecule;
+    m_fileReadMolecule.reset();
   }
   m_fileReadThread->deleteLater();
   m_fileReadThread.reset();
   m_threadedReader->deleteLater();
   m_threadedReader.reset();
-  m_fileReadMolecule = nullptr;
+  m_fileReadMolecule.reset();
   m_progressDialog->hide();
   m_progressDialog->deleteLater();
   m_progressDialog.reset();
