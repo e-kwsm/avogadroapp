@@ -11,6 +11,8 @@
 
 #include "connection.h"
 
+#include <memory>
+
 class QLocalSocket;
 class QDataStream;
 
@@ -67,7 +69,7 @@ private:
   void setSocket(QLocalSocket* socket);
 
   QString m_connectionString;
-  QLocalSocket* m_socket;
+  std::unique_ptr<QLocalSocket> m_socket;
   QDataStream* m_dataStream;
   bool m_holdRequests;
 };
