@@ -427,7 +427,7 @@ private:
   QtGui::Molecule* m_molecule;
   QtGui::RWMolecule* m_rwMolecule;
   QtGui::MoleculeModel* m_moleculeModel;
-  QtGui::LayerModel* m_layerModel;
+  std::unique_ptr<QtGui::LayerModel> m_layerModel;
   QtGui::ScenePlugin* m_activeScenePlugin;
   bool m_queuedFilesStarted;
   QStringList m_queuedFiles;

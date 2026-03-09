@@ -554,8 +554,8 @@ void MainWindow::setupInterface()
   connect(m_moleculeTreeView.get(), &QAbstractItemView::clicked, this,
           &MainWindow::moleculeActivated);
 
-  m_layerModel = new QtGui::LayerModel(this);
-  m_layerTreeView->setModel(m_layerModel);
+  m_layerModel = std::make_unique<QtGui::LayerModel>(this);
+  m_layerTreeView->setModel(m_layerModel.get());
   m_layerTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_layerTreeView->setAlternatingRowColors(true);
   m_layerTreeView->header()->setStretchLastSection(false);
@@ -569,8 +569,8 @@ void MainWindow::setupInterface()
           &MainWindow::layerActivated);
   connect(m_layerTreeView.get(), &QAbstractItemView::clicked, this,
           &MainWindow::layerActivated);
-  connect(m_sceneTreeView.get(), &QAbstractItemView::clicked, m_layerModel,
-          &QtGui::LayerModel::updateRows);
+  connect(m_sceneTreeView.get(), &QAbstractItemView::clicked,
+          m_layerModel.get(), &QtGui::LayerModel::updateRows);
 
   viewActivated(glWidget);
   buildTools();
