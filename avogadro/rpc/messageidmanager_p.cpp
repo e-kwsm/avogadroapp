@@ -14,7 +14,7 @@
 
 namespace Avogadro::RPC {
 
-MessageIdManager* MessageIdManager::m_instance = nullptr;
+std::unique_ptr<MessageIdManager> MessageIdManager::m_instance = nullptr;
 
 MessageIdManager::MessageIdManager() : m_generator(0)
 {
@@ -25,13 +25,12 @@ MessageIdManager::MessageIdManager() : m_generator(0)
 void MessageIdManager::init()
 {
   if (!m_instance)
-    m_instance = new MessageIdManager();
+    m_instance = std::make_unique<MessageIdManager>();
 }
 
 void MessageIdManager::cleanup()
 {
-  delete m_instance;
-  m_instance = nullptr;
+  m_instance.reset();
 }
 
 MessageIdType MessageIdManager::registerMethod(const QString& method)

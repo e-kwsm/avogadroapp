@@ -14,6 +14,8 @@
 #include <QtCore/QMap>
 #include <QtCore/QString>
 
+#include <memory>
+
 namespace Avogadro::RPC {
 
 /**
@@ -23,6 +25,7 @@ namespace Avogadro::RPC {
 class MessageIdManager
 {
 public:
+  MessageIdManager();
   /**
    * @brief Request a new message id that is associated with @a method.
    * The new id and method will be registered in the lookup table.
@@ -38,11 +41,10 @@ public:
   static QString lookupMethod(const MessageIdType& id);
 
 private:
-  MessageIdManager();
   static void init();
   static void cleanup();
 
-  static MessageIdManager* m_instance;
+  static std::unique_ptr<MessageIdManager> m_instance;
   QMap<double, QString> m_lookup;
   double m_generator;
 };
