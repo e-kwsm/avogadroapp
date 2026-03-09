@@ -477,7 +477,7 @@ private:
   QAction* m_viewPerspective;
   QAction* m_viewOrthographic;
 
-  ViewFactory* m_viewFactory;
+  std::unique_ptr<ViewFactory> m_viewFactory;
 
   QNetworkAccessManager* m_network = nullptr;
 #ifdef _3DCONNEXION
