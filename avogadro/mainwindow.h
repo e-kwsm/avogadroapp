@@ -447,7 +447,7 @@ private:
   std::unique_ptr<BackgroundFileFormat> m_threadedReader;
   std::unique_ptr<BackgroundFileFormat> m_threadedWriter;
   std::unique_ptr<QProgressDialog> m_progressDialog;
-  QtGui::Molecule* m_fileReadMolecule;
+  std::unique_ptr<QtGui::Molecule> m_fileReadMolecule;
 
   std::unique_ptr<QToolBar> m_fileToolBar;
   std::unique_ptr<QToolBar> m_toolToolBar;
