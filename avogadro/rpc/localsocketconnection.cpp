@@ -42,8 +42,7 @@ LocalSocketConnection::~LocalSocketConnection()
   // Make sure we are closed
   close();
 
-  delete m_socket;
-  m_socket = nullptr;
+  m_socket.reset();
 
   delete m_dataStream;
   m_dataStream = nullptr;
