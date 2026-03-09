@@ -12,6 +12,7 @@
 #include <QtCore/QVariantMap>
 #include <QtWidgets/QMainWindow>
 
+#include <memory>
 #include <vector>
 
 #ifdef QTTESTING
@@ -749,7 +750,7 @@ private:
   bool m_queuedFilesStarted;
   QStringList m_queuedFiles;
   bool m_pluginFormatsSettled = false;
-  QTimer* m_autosaveTimer = nullptr; // for the autosave timer
+  std::unique_ptr<QTimer> m_autosaveTimer = nullptr; // for the autosave timer
   // Skip autosave recovery and writing autosaves entirely, so that a
   // scripted or automated run neither prompts nor leaves files behind.
   bool m_skipAutosave = false;
