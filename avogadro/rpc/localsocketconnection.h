@@ -70,7 +70,7 @@ private:
 
   QString m_connectionString;
   std::unique_ptr<QLocalSocket> m_socket;
-  QDataStream* m_dataStream;
+  std::unique_ptr<QDataStream> m_dataStream;
   bool m_holdRequests;
 };
 
