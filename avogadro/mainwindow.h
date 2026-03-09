@@ -610,7 +610,7 @@ private:
   std::unique_ptr<BackgroundFileFormat> m_threadedReader;
   std::unique_ptr<BackgroundFileFormat> m_threadedWriter;
   std::unique_ptr<QProgressDialog> m_progressDialog;
-  QtGui::Molecule* m_fileReadMolecule;
+  std::unique_ptr<QtGui::Molecule> m_fileReadMolecule;
   // Set by exportFile() when the RPC listener is waiting on an async write;
   // backgroundWriterFinished() reports back through commandCompleted().
   quint64 m_pendingExportToken = 0;
