@@ -455,9 +455,9 @@ private:
   bool m_moleculeDirty;
 
   QtGui::MultiViewWidget* m_multiViewWidget;
-  QTreeView* m_sceneTreeView;
-  QTreeView* m_layerTreeView;
-  QTreeView* m_moleculeTreeView;
+  std::unique_ptr<QTreeView> m_sceneTreeView;
+  std::unique_ptr<QTreeView> m_layerTreeView;
+  std::unique_ptr<QTreeView> m_moleculeTreeView;
   QDockWidget* m_toolDock;
   QDockWidget* m_viewDock;
   QDockWidget* m_sceneDock;

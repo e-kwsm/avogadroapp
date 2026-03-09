@@ -468,12 +468,12 @@ void MainWindow::setupInterface()
 
   // Our dock for toggling different display types.
   m_sceneDock = new QDockWidget(tr("Display Types"), this);
-  m_sceneTreeView = new QTreeView(m_sceneDock);
+  m_sceneTreeView = std::make_unique<QTreeView>(m_sceneDock);
   m_sceneTreeView->setIndentation(0);
   m_sceneTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_sceneTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
   m_sceneTreeView->setSortingEnabled(true);
-  m_sceneDock->setWidget(m_sceneTreeView);
+  m_sceneDock->setWidget(m_sceneTreeView.get());
   addDockWidget(Qt::LeftDockWidgetArea, m_sceneDock);
 
   // Our dock for configuring the display types.
@@ -482,22 +482,22 @@ void MainWindow::setupInterface()
 
   // Our molecule dock.
   m_moleculeDock = new QDockWidget(tr("Files"), this);
-  m_moleculeTreeView = new QTreeView(m_moleculeDock);
+  m_moleculeTreeView = std::make_unique<QTreeView>(m_moleculeDock);
   m_moleculeTreeView->setIndentation(0);
   m_moleculeTreeView->setItemDelegateForColumn(
-    0, new QtGui::RichTextDelegate(m_moleculeTreeView));
+    0, new QtGui::RichTextDelegate(m_moleculeTreeView.get()));
   m_moleculeTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_moleculeTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
-  m_moleculeDock->setWidget(m_moleculeTreeView);
+  m_moleculeDock->setWidget(m_moleculeTreeView.get());
   addDockWidget(Qt::LeftDockWidgetArea, m_moleculeDock);
 
   // Our layer dock.
   m_layerDock = new QDockWidget(tr("Layers"), this);
-  m_layerTreeView = new QTreeView(m_layerDock);
+  m_layerTreeView = std::make_unique<QTreeView>(m_layerDock);
   m_layerTreeView->setIndentation(0);
   m_layerTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_layerTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
-  m_layerDock->setWidget(m_layerTreeView);
+  m_layerDock->setWidget(m_layerTreeView.get());
   addDockWidget(Qt::LeftDockWidgetArea, m_layerDock);
 
   // this doesn't seem necessary
@@ -534,9 +534,9 @@ void MainWindow::setupInterface()
   m_sceneTreeView->header()->setVisible(false);
   if (m_sceneTreeView->header()->count() > 0)
     m_sceneTreeView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
-  connect(m_sceneTreeView, &QAbstractItemView::activated, this,
+  connect(m_sceneTreeView.get(), &QAbstractItemView::activated, this,
           &MainWindow::sceneItemActivated);
-  connect(m_sceneTreeView, &QAbstractItemView::clicked, this,
+  connect(m_sceneTreeView.get(), &QAbstractItemView::clicked, this,
           &MainWindow::sceneItemActivated);
 
   // Create the molecule model
@@ -549,9 +549,9 @@ void MainWindow::setupInterface()
   m_moleculeTreeView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
   m_moleculeTreeView->header()->setSectionResizeMode(1, QHeaderView::Fixed);
   m_moleculeTreeView->header()->resizeSection(1, 30);
-  connect(m_moleculeTreeView, &QAbstractItemView::activated, this,
+  connect(m_moleculeTreeView.get(), &QAbstractItemView::activated, this,
           &MainWindow::moleculeActivated);
-  connect(m_moleculeTreeView, &QAbstractItemView::clicked, this,
+  connect(m_moleculeTreeView.get(), &QAbstractItemView::clicked, this,
           &MainWindow::moleculeActivated);
 
   m_layerModel = new QtGui::LayerModel(this);
@@ -565,11 +565,11 @@ void MainWindow::setupInterface()
     m_layerTreeView->header()->setSectionResizeMode(i, QHeaderView::Fixed);
     m_layerTreeView->header()->resizeSection(i, 25);
   }
-  connect(m_layerTreeView, &QAbstractItemView::activated, this,
+  connect(m_layerTreeView.get(), &QAbstractItemView::activated, this,
           &MainWindow::layerActivated);
-  connect(m_layerTreeView, &QAbstractItemView::clicked, this,
+  connect(m_layerTreeView.get(), &QAbstractItemView::clicked, this,
           &MainWindow::layerActivated);
-  connect(m_sceneTreeView, &QAbstractItemView::clicked, m_layerModel,
+  connect(m_sceneTreeView.get(), &QAbstractItemView::clicked, m_layerModel,
           &QtGui::LayerModel::updateRows);
 
   viewActivated(glWidget);
