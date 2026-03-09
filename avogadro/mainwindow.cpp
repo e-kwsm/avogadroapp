@@ -689,7 +689,6 @@ MainWindow::~MainWindow()
 #endif
   writeSettings();
   delete m_molecule;
-  delete m_viewFactory;
 }
 
 void MainWindow::setupInterface()
@@ -704,7 +703,7 @@ void MainWindow::setupInterface()
   QSettings settings;
 
   m_multiViewWidget = new QtGui::MultiViewWidget(this);
-  m_multiViewWidget->setFactory(m_viewFactory);
+  m_multiViewWidget->setFactory(m_viewFactory.get());
   setCentralWidget(m_multiViewWidget);
   auto* glWidget = new GLWidget(this);
   m_viewFactory->setGLWidget(glWidget);
