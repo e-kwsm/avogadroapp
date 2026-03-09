@@ -53,7 +53,7 @@ void LocalSocketConnection::setSocket(QLocalSocket* socket)
   if (m_socket != nullptr) {
     m_socket->abort();
     m_socket->disconnect(this);
-    disconnect(m_socket);
+    disconnect(m_socket.get());
     m_socket->deleteLater();
   }
   if (socket != nullptr) {
@@ -63,7 +63,7 @@ void LocalSocketConnection::setSocket(QLocalSocket* socket)
   }
   m_dataStream->setDevice(socket);
   m_dataStream->setVersion(QDataStream::Qt_4_8);
-  m_socket = socket;
+  m_socket.reset(socket);
 }
 
 void LocalSocketConnection::readSocket()
