@@ -10,6 +10,8 @@
 #include <QtCore/QVariantMap>
 #include <QtWidgets/QMainWindow>
 
+#include <memory>
+
 #ifdef QTTESTING
 class pqTestUtility;
 #endif
@@ -429,7 +431,7 @@ private:
   QtGui::ScenePlugin* m_activeScenePlugin;
   bool m_queuedFilesStarted;
   QStringList m_queuedFiles;
-  QTimer* m_autosaveTimer = nullptr; // for the autosave timer
+  std::unique_ptr<QTimer> m_autosaveTimer = nullptr; // for the autosave timer
   QStringList m_recentFiles;
   QList<QAction*> m_actionRecentFiles;
 

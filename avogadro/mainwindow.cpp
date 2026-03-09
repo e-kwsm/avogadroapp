@@ -1494,13 +1494,13 @@ void MainWindow::startAutosaveTimer()
   if (m_autosaveTimer)
     return;
 
-  m_autosaveTimer = new QTimer(this);
+  m_autosaveTimer = std::make_unique<QTimer>(this);
 
   QSettings settings;
   int intervalMinutes = settings.value("autosave/interval", 2).toInt();
   int intervalMs = qMax(1, intervalMinutes) * 60 * 1000;
 
-  connect(m_autosaveTimer, &QTimer::timeout, this,
+  connect(m_autosaveTimer.get(), &QTimer::timeout, this,
           &MainWindow::autosaveDocument);
   m_autosaveTimer->start(intervalMs);
 }
