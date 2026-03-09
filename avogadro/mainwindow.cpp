@@ -1137,7 +1137,7 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
 
   if (m_threadedReader)
     m_threadedReader->deleteLater();
-  m_threadedReader = new BackgroundFileFormat(reader);
+  m_threadedReader = std::make_unique<BackgroundFileFormat>(reader);
   if (m_fileReadMolecule)
     m_fileReadMolecule->deleteLater();
   m_fileReadMolecule = new Molecule(this);
@@ -1182,11 +1182,11 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
     });
   identifierTimer->start();
 
-  connect(m_fileReadThread.get(), &QThread::started, m_threadedReader,
+  connect(m_fileReadThread.get(), &QThread::started, m_threadedReader.get(),
           &BackgroundFileFormat::read);
-  connect(m_threadedReader, &BackgroundFileFormat::finished,
+  connect(m_threadedReader.get(), &BackgroundFileFormat::finished,
           m_fileReadThread.get(), &QThread::quit);
-  connect(m_threadedReader, &BackgroundFileFormat::finished, this,
+  connect(m_threadedReader.get(), &BackgroundFileFormat::finished, this,
           &MainWindow::backgroundReaderFinished);
 
   // Start the file operation
@@ -1266,7 +1266,7 @@ void MainWindow::backgroundReaderFinished()
   m_fileReadThread->deleteLater();
   m_fileReadThread.reset();
   m_threadedReader->deleteLater();
-  m_threadedReader = nullptr;
+  m_threadedReader.reset();
   m_fileReadMolecule = nullptr;
   m_progressDialog->hide();
   m_progressDialog->deleteLater();
@@ -1307,7 +1307,7 @@ bool MainWindow::backgroundWriterFinished()
   m_fileWriteThread->deleteLater();
   m_fileWriteThread.reset();
   m_threadedWriter->deleteLater();
-  m_threadedWriter = nullptr;
+  m_threadedWriter.reset();
   m_progressDialog->deleteLater();
   m_progressDialog.reset();
 
@@ -2601,15 +2601,15 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
       .arg(ident));
   /// @todo Add API to abort file ops
   m_progressDialog->setCancelButton(nullptr);
-  connect(m_fileWriteThread.get(), &QThread::started, m_threadedWriter,
+  connect(m_fileWriteThread.get(), &QThread::started, m_threadedWriter.get(),
           &BackgroundFileFormat::write);
-  connect(m_threadedWriter, &BackgroundFileFormat::finished,
+  connect(m_threadedWriter.get(), &BackgroundFileFormat::finished,
           m_fileWriteThread.get(), &QThread::quit);
 
   // Start the file operation
   m_progressDialog->show();
   if (async) {
-    connect(m_threadedWriter, &BackgroundFileFormat::finished, this,
+    connect(m_threadedWriter.get(), &BackgroundFileFormat::finished, this,
             &MainWindow::backgroundWriterFinished);
     m_fileWriteThread->start();
     return true;
