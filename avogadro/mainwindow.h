@@ -609,7 +609,7 @@ private:
   QThread* m_fileWriteThread;
   BackgroundFileFormat* m_threadedReader;
   BackgroundFileFormat* m_threadedWriter;
-  QProgressDialog* m_progressDialog;
+  std::unique_ptr<QProgressDialog> m_progressDialog;
   QtGui::Molecule* m_fileReadMolecule;
   // Set by exportFile() when the RPC listener is waiting on an async write;
   // backgroundWriterFinished() reports back through commandCompleted().
