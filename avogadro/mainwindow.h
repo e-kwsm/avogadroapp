@@ -446,7 +446,7 @@ private:
   QThread* m_fileWriteThread;
   BackgroundFileFormat* m_threadedReader;
   BackgroundFileFormat* m_threadedWriter;
-  QProgressDialog* m_progressDialog;
+  std::unique_ptr<QProgressDialog> m_progressDialog;
   QtGui::Molecule* m_fileReadMolecule;
 
   std::unique_ptr<QToolBar> m_fileToolBar;

@@ -1107,7 +1107,7 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
   m_threadedReader->setFileName(fileName);
 
   // Setup a progress dialog in case file loading is slow
-  m_progressDialog = new QProgressDialog(this);
+  m_progressDialog = std::make_unique<QProgressDialog>(this);
   m_progressDialog->setRange(0, 0);
   m_progressDialog->setValue(0);
   m_progressDialog->setMinimumDuration(750);
@@ -1204,7 +1204,7 @@ void MainWindow::backgroundReaderFinished()
   m_fileReadMolecule = nullptr;
   m_progressDialog->hide();
   m_progressDialog->deleteLater();
-  m_progressDialog = nullptr;
+  m_progressDialog.reset();
 
   reassignCustomElements();
 
@@ -1237,7 +1237,7 @@ bool MainWindow::backgroundWriterFinished()
   m_threadedWriter->deleteLater();
   m_threadedWriter = nullptr;
   m_progressDialog->deleteLater();
-  m_progressDialog = nullptr;
+  m_progressDialog.reset();
 
   // On successful save, remove any autosave files
   if (success)
@@ -2135,7 +2135,7 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
   m_threadedWriter->setFileName(fileName);
 
   // Setup a progress dialog in case file loading is slow
-  m_progressDialog = new QProgressDialog(this);
+  m_progressDialog = std::make_unique<QProgressDialog>(this);
   m_progressDialog->setRange(0, 0);
   m_progressDialog->setValue(0);
   m_progressDialog->setMinimumDuration(750);
