@@ -458,11 +458,11 @@ private:
   std::unique_ptr<QTreeView> m_sceneTreeView;
   std::unique_ptr<QTreeView> m_layerTreeView;
   std::unique_ptr<QTreeView> m_moleculeTreeView;
-  QDockWidget* m_toolDock;
-  QDockWidget* m_viewDock;
-  QDockWidget* m_sceneDock;
-  QDockWidget* m_layerDock;
-  QDockWidget* m_moleculeDock;
+  std::unique_ptr<QDockWidget> m_toolDock;
+  std::unique_ptr<QDockWidget> m_viewDock;
+  std::unique_ptr<QDockWidget> m_sceneDock;
+  std::unique_ptr<QDockWidget> m_layerDock;
+  std::unique_ptr<QDockWidget> m_moleculeDock;
   QList<QtGui::ToolPlugin*> m_tools;
   QList<QtGui::ExtensionPlugin*> m_extensions;
   // map from script commands to tools and extensions

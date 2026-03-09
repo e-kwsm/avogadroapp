@@ -463,47 +463,47 @@ void MainWindow::setupInterface()
   }
 
   // Our tool dock.
-  m_toolDock = new QDockWidget(tr("Tool"), this);
-  addDockWidget(Qt::LeftDockWidgetArea, m_toolDock);
+  m_toolDock = std::make_unique<QDockWidget>(tr("Tool"), this);
+  addDockWidget(Qt::LeftDockWidgetArea, m_toolDock.get());
 
   // Our dock for toggling different display types.
-  m_sceneDock = new QDockWidget(tr("Display Types"), this);
-  m_sceneTreeView = std::make_unique<QTreeView>(m_sceneDock);
+  m_sceneDock = std::make_unique<QDockWidget>(tr("Display Types"), this);
+  m_sceneTreeView = std::make_unique<QTreeView>(m_sceneDock.get());
   m_sceneTreeView->setIndentation(0);
   m_sceneTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_sceneTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
   m_sceneTreeView->setSortingEnabled(true);
   m_sceneDock->setWidget(m_sceneTreeView.get());
-  addDockWidget(Qt::LeftDockWidgetArea, m_sceneDock);
+  addDockWidget(Qt::LeftDockWidgetArea, m_sceneDock.get());
 
   // Our dock for configuring the display types.
-  m_viewDock = new QDockWidget(tr("Display Type Settings"), this);
-  addDockWidget(Qt::LeftDockWidgetArea, m_viewDock);
+  m_viewDock = std::make_unique<QDockWidget>(tr("Display Type Settings"), this);
+  addDockWidget(Qt::LeftDockWidgetArea, m_viewDock.get());
 
   // Our molecule dock.
-  m_moleculeDock = new QDockWidget(tr("Files"), this);
-  m_moleculeTreeView = std::make_unique<QTreeView>(m_moleculeDock);
+  m_moleculeDock = std::make_unique<QDockWidget>(tr("Files"), this);
+  m_moleculeTreeView = std::make_unique<QTreeView>(m_moleculeDock.get());
   m_moleculeTreeView->setIndentation(0);
   m_moleculeTreeView->setItemDelegateForColumn(
     0, new QtGui::RichTextDelegate(m_moleculeTreeView.get()));
   m_moleculeTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_moleculeTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
   m_moleculeDock->setWidget(m_moleculeTreeView.get());
-  addDockWidget(Qt::LeftDockWidgetArea, m_moleculeDock);
+  addDockWidget(Qt::LeftDockWidgetArea, m_moleculeDock.get());
 
   // Our layer dock.
-  m_layerDock = new QDockWidget(tr("Layers"), this);
-  m_layerTreeView = std::make_unique<QTreeView>(m_layerDock);
+  m_layerDock = std::make_unique<QDockWidget>(tr("Layers"), this);
+  m_layerTreeView = std::make_unique<QTreeView>(m_layerDock.get());
   m_layerTreeView->setIndentation(0);
   m_layerTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_layerTreeView->setSelectionMode(QAbstractItemView::SingleSelection);
   m_layerDock->setWidget(m_layerTreeView.get());
-  addDockWidget(Qt::LeftDockWidgetArea, m_layerDock);
+  addDockWidget(Qt::LeftDockWidgetArea, m_layerDock.get());
 
   // this doesn't seem necessary
   //  m_layerDock->setVisible(settings.value("layerDock", true).toBool());
 
-  tabifyDockWidget(m_moleculeDock, m_layerDock);
+  tabifyDockWidget(m_moleculeDock.get(), m_layerDock.get());
   m_moleculeDock->raise();
 
   // Switch to our fallback icons if there are no platform-specific icons.
@@ -1561,7 +1561,8 @@ void MainWindow::layerActivated(const QModelIndex& idx)
       if (m_sceneDock->isHidden()) {
         m_sceneDock->show();
         m_viewDock->show();
-        resizeDocks({ m_sceneDock, m_viewDock }, { 250, 50 }, Qt::Vertical);
+        resizeDocks({ m_sceneDock.get(), m_viewDock.get() }, { 250, 50 },
+                    Qt::Vertical);
       } else {
         m_sceneDock->hide();
         m_viewDock->hide();
