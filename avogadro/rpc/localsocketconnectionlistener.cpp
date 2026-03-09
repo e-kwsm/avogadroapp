@@ -98,7 +98,7 @@ LocalSocketConnectionListener::LocalSocketConnectionListener(
   , m_server(new QLocalServer())
 {
   m_connectionString = resolveServerName(connString, &m_resolveError);
-  connect(m_server, SIGNAL(newConnection()), this,
+  connect(m_server.get(), SIGNAL(newConnection()), this,
           SLOT(newConnectionAvailable()));
 }
 
@@ -107,8 +107,7 @@ LocalSocketConnectionListener::~LocalSocketConnectionListener()
   // Make sure we are stopped
   stop();
 
-  delete m_server;
-  m_server = nullptr;
+  m_server.reset();
 }
 
 void LocalSocketConnectionListener::start()

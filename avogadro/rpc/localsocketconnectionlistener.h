@@ -13,6 +13,8 @@
 
 #include <QtNetwork/QAbstractSocket>
 
+#include <memory>
+
 class QLocalServer;
 
 namespace Avogadro::RPC {
@@ -82,7 +84,7 @@ private:
 
   QString m_connectionString;
   QString m_resolveError;
-  QLocalServer* m_server;
+  std::unique_ptr<QLocalServer> m_server;
 };
 
 } // namespace Avogadro::RPC
