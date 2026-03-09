@@ -615,8 +615,8 @@ private:
   // backgroundWriterFinished() reports back through commandCompleted().
   quint64 m_pendingExportToken = 0;
 
-  QToolBar* m_fileToolBar;
-  QToolBar* m_toolToolBar;
+  std::unique_ptr<QToolBar> m_fileToolBar;
+  std::unique_ptr<QToolBar> m_toolToolBar;
 
   bool m_moleculeDirty;
 
