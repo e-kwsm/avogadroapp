@@ -783,7 +783,7 @@ private:
   QStringList m_translationList;
   QStringList m_localeCodes;
 
-  MenuBuilder* m_menuBuilder;
+  std::unique_ptr<MenuBuilder> m_menuBuilder;
   /// Owned by this window (a QObject child); see TargetRegistry.
   TargetRegistry* m_targets = nullptr;
   bool m_initialized = false; ///< true after the initial buildMenu() completes
