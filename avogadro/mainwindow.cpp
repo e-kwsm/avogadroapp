@@ -465,7 +465,6 @@ MainWindow::~MainWindow()
 #endif
   writeSettings();
   delete m_molecule;
-  delete m_menuBuilder;
   delete m_viewFactory;
 }
 
