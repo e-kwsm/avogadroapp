@@ -444,8 +444,8 @@ private:
   // These variables take care of background file reading.
   std::unique_ptr<QThread> m_fileReadThread;
   std::unique_ptr<QThread> m_fileWriteThread;
-  BackgroundFileFormat* m_threadedReader;
-  BackgroundFileFormat* m_threadedWriter;
+  std::unique_ptr<BackgroundFileFormat> m_threadedReader;
+  std::unique_ptr<BackgroundFileFormat> m_threadedWriter;
   std::unique_ptr<QProgressDialog> m_progressDialog;
   QtGui::Molecule* m_fileReadMolecule;
 
