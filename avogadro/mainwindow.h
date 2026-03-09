@@ -712,7 +712,7 @@ private:
   QAction* m_viewOrthographic;
   QAction* m_nextMolecule;
 
-  ViewFactory* m_viewFactory;
+  std::unique_ptr<ViewFactory> m_viewFactory;
 
   QNetworkAccessManager* m_network = nullptr;
 #ifdef _3DCONNEXION
