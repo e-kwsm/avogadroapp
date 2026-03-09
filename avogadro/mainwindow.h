@@ -442,8 +442,8 @@ private:
   bool m_initialized = false; ///< true after the initial buildMenu() completes
 
   // These variables take care of background file reading.
-  QThread* m_fileReadThread;
-  QThread* m_fileWriteThread;
+  std::unique_ptr<QThread> m_fileReadThread;
+  std::unique_ptr<QThread> m_fileWriteThread;
   BackgroundFileFormat* m_threadedReader;
   BackgroundFileFormat* m_threadedWriter;
   std::unique_ptr<QProgressDialog> m_progressDialog;
