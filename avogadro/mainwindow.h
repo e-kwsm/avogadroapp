@@ -438,7 +438,7 @@ private:
   QStringList m_translationList;
   QStringList m_localeCodes;
 
-  MenuBuilder* m_menuBuilder;
+  std::unique_ptr<MenuBuilder> m_menuBuilder;
   bool m_initialized = false; ///< true after the initial buildMenu() completes
 
   // These variables take care of background file reading.
