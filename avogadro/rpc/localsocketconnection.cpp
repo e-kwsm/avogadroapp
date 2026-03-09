@@ -43,9 +43,7 @@ LocalSocketConnection::~LocalSocketConnection()
   close();
 
   m_socket.reset();
-
-  delete m_dataStream;
-  m_dataStream = nullptr;
+  m_dataStream.reset();
 }
 
 void LocalSocketConnection::setSocket(QLocalSocket* socket)
