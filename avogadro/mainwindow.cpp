@@ -1305,7 +1305,7 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
 
   // Prepare the background thread to read in the selected file.
   if (!m_fileReadThread)
-    m_fileReadThread = new QThread(this);
+    m_fileReadThread = std::make_unique<QThread>(this);
 
   if (m_threadedReader)
     m_threadedReader->deleteLater();
@@ -1315,7 +1315,7 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
   m_fileReadMolecule = new Molecule(this);
   // make sure the filename is UTF-8 for serialization
   m_fileReadMolecule->setData("fileName", fileName.toStdString());
-  m_threadedReader->moveToThread(m_fileReadThread);
+  m_threadedReader->moveToThread(m_fileReadThread.get());
   m_threadedReader->setMolecule(m_fileReadMolecule);
   m_threadedReader->setFileName(fileName);
 
@@ -1355,10 +1355,10 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
     });
   identifierTimer->start();
 
-  connect(m_fileReadThread, &QThread::started, m_threadedReader,
+  connect(m_fileReadThread.get(), &QThread::started, m_threadedReader,
           &BackgroundFileFormat::read);
-  connect(m_threadedReader, &BackgroundFileFormat::finished, m_fileReadThread,
-          &QThread::quit);
+  connect(m_threadedReader, &BackgroundFileFormat::finished,
+          m_fileReadThread.get(), &QThread::quit);
   connect(m_threadedReader, &BackgroundFileFormat::finished, this,
           &MainWindow::backgroundReaderFinished);
 
@@ -1456,7 +1456,7 @@ void MainWindow::backgroundReaderFinished()
     delete m_fileReadMolecule;
   }
   m_fileReadThread->deleteLater();
-  m_fileReadThread = nullptr;
+  m_fileReadThread.reset();
   m_threadedReader->deleteLater();
   m_threadedReader = nullptr;
   m_fileReadMolecule = nullptr;
@@ -1506,7 +1506,7 @@ bool MainWindow::backgroundWriterFinished()
     errorMessage = tr("The save was canceled.");
   }
   m_fileWriteThread->deleteLater();
-  m_fileWriteThread = nullptr;
+  m_fileWriteThread.reset();
   m_threadedWriter->deleteLater();
   m_threadedWriter = nullptr;
   m_progressDialog->deleteLater();
@@ -2834,8 +2834,8 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
   }
 
   // Initialize out writer.
-  m_fileWriteThread = new QThread(this);
-  m_threadedWriter = new BackgroundFileFormat(writer);
+  m_fileWriteThread = std::make_unique<QThread>(this);
+  m_threadedWriter->deleteLater();
 
   // get the camera modelView and projection to save it
   if (auto* glWidget =
@@ -2853,7 +2853,7 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
   }
 
   // Prepare the background thread to write the selected file.
-  m_threadedWriter->moveToThread(m_fileWriteThread);
+  m_threadedWriter->moveToThread(m_fileWriteThread.get());
   m_threadedWriter->setMolecule(mol);
   m_threadedWriter->setFileName(fileName);
 
@@ -2869,10 +2869,10 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
       .arg(ident));
   /// @todo Add API to abort file ops
   m_progressDialog->setCancelButton(nullptr);
-  connect(m_fileWriteThread, &QThread::started, m_threadedWriter,
+  connect(m_fileWriteThread.get(), &QThread::started, m_threadedWriter,
           &BackgroundFileFormat::write);
-  connect(m_threadedWriter, &BackgroundFileFormat::finished, m_fileWriteThread,
-          &QThread::quit);
+  connect(m_threadedWriter, &BackgroundFileFormat::finished,
+          m_fileWriteThread.get(), &QThread::quit);
 
   // Start the file operation
   m_progressDialog->show();
@@ -2882,9 +2882,10 @@ bool MainWindow::saveFileAs(const QString& fileName, Io::FileFormat* writer,
     m_fileWriteThread->start();
     return true;
   } else {
-    QTimer::singleShot(0, m_fileWriteThread, SLOT(start()));
+    QTimer::singleShot(0, m_fileWriteThread.get(), SLOT(start()));
     QEventLoop loop;
-    connect(m_fileWriteThread, &QThread::finished, &loop, &QEventLoop::quit);
+    connect(m_fileWriteThread.get(), &QThread::finished, &loop,
+            &QEventLoop::quit);
     loop.exec();
     return backgroundWriterFinished();
   }
