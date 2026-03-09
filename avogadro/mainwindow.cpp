@@ -540,8 +540,8 @@ void MainWindow::setupInterface()
           &MainWindow::sceneItemActivated);
 
   // Create the molecule model
-  m_moleculeModel = new QtGui::MoleculeModel(this);
-  m_moleculeTreeView->setModel(m_moleculeModel);
+  m_moleculeModel = std::make_unique<QtGui::MoleculeModel>(this);
+  m_moleculeTreeView->setModel(m_moleculeModel.get());
   m_moleculeTreeView->setSelectionBehavior(QAbstractItemView::SelectRows);
   m_moleculeTreeView->setAlternatingRowColors(true);
   m_moleculeTreeView->header()->setStretchLastSection(false);

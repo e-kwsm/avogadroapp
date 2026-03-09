@@ -426,7 +426,7 @@ private slots:
 private:
   QtGui::Molecule* m_molecule;
   QtGui::RWMolecule* m_rwMolecule;
-  QtGui::MoleculeModel* m_moleculeModel;
+  std::unique_ptr<QtGui::MoleculeModel> m_moleculeModel;
   std::unique_ptr<QtGui::LayerModel> m_layerModel;
   QtGui::ScenePlugin* m_activeScenePlugin;
   bool m_queuedFilesStarted;
