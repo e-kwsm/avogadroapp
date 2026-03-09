@@ -319,7 +319,7 @@ public:
   {
     this->XMLStream = nullptr;
   }
-  ~XMLEventObserver()
+  ~XMLEventObserver() override
   {
     if (this->XMLStream) {
       this->XMLStream->writeEndElement(); // close properly
@@ -336,7 +336,7 @@ public:
   }
 
 protected:
-  virtual void setStream(QTextStream* stream) override
+  void setStream(QTextStream* stream) override
   {
     if (this->XMLStream) {
       this->XMLStream->writeEndElement();
@@ -359,9 +359,9 @@ protected:
     }
   }
 
-  virtual void onRecordEvent(const QString& widget, const QString& command,
-                             const QString& arguments,
-                             const int& eventType = 0) override
+  void onRecordEvent(const QString& widget, const QString& command,
+                     const QString& arguments,
+                     const int& eventType = 0) override
   {
     if (this->XMLStream) {
       this->XMLStream->writeStartElement("event");
@@ -385,10 +385,10 @@ public:
   {
     this->XMLStream = nullptr;
   }
-  ~XMLEventSource() { delete this->XMLStream; }
+  ~XMLEventSource() override { delete this->XMLStream; }
 
 protected:
-  virtual void setContent(const QString& xmlfilename) override
+  void setContent(const QString& xmlfilename) override
   {
     delete this->XMLStream;
     this->XMLStream = nullptr;
