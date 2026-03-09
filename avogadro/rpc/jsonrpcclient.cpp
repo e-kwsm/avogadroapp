@@ -50,8 +50,8 @@ bool JsonRpcClient::connectToServer(const QString& serverName_)
 
   // New connection.
   if (m_socket == nullptr) {
-    m_socket = new QLocalSocket(this);
-    connect(m_socket, SIGNAL(readyRead()), this, SLOT(readSocket()));
+    m_socket = std::make_unique<QLocalSocket>(this);
+    connect(m_socket.get(), SIGNAL(readyRead()), this, SLOT(readSocket()));
   }
 
   if (serverName_.isEmpty()) {
@@ -90,7 +90,7 @@ bool JsonRpcClient::sendRequest(const QJsonObject& request)
     return false;
 
   QJsonDocument document(request);
-  QDataStream stream(m_socket);
+  QDataStream stream(m_socket.get());
   stream.setVersion(QDataStream::Qt_4_8);
   stream << document.toJson();
   return (stream.status() == QDataStream::Ok);
@@ -130,7 +130,7 @@ void JsonRpcClient::readPacket(const QByteArray message)
 void JsonRpcClient::readSocket()
 {
   if (m_socket->bytesAvailable() > 0) {
-    QDataStream stream(m_socket);
+    QDataStream stream(m_socket.get());
     stream.setVersion(QDataStream::Qt_4_8);
     QByteArray json;
     stream >> json;
