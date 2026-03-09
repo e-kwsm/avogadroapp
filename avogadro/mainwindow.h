@@ -449,8 +449,8 @@ private:
   QProgressDialog* m_progressDialog;
   QtGui::Molecule* m_fileReadMolecule;
 
-  QToolBar* m_fileToolBar;
-  QToolBar* m_toolToolBar;
+  std::unique_ptr<QToolBar> m_fileToolBar;
+  std::unique_ptr<QToolBar> m_toolToolBar;
 
   bool m_moleculeDirty;
 

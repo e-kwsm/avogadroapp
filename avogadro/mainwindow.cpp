@@ -521,12 +521,12 @@ void MainWindow::setupInterface()
 #ifndef Q_OS_MAC
   m_fileToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
   m_fileToolBar->setWindowTitle(tr("File", "File toolbar"));
-  addToolBar(m_fileToolBar);
+  addToolBar(m_fileToolBar.get());
 #else
   m_fileToolBar->hide();
 #endif
   m_toolToolBar->setWindowTitle(tr("Tools", "Tools toolbar"));
-  addToolBar(m_toolToolBar);
+  addToolBar(m_toolToolBar.get());
 
   // Create the scene plugin model
   m_sceneTreeView->setAlternatingRowColors(true);
@@ -2778,7 +2778,7 @@ void MainWindow::buildTools()
     // Add action to toolbar.
     toolPlugin->setParent(this);
     QAction* action = toolPlugin->activateAction();
-    action->setParent(m_toolToolBar);
+    action->setParent(m_toolToolBar.get());
     action->setCheckable(true);
     if (index < 10)
       action->setShortcut(QKeySequence(QString("Ctrl+%1").arg(index)));
