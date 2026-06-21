@@ -260,8 +260,9 @@ RpcListener::RpcListener(const QString& connectionName, QObject* parent_)
   // Find the main window.
   m_window = nullptr;
   foreach (QWidget* widget, QApplication::topLevelWidgets())
-    if ((m_window = qobject_cast<MainWindow*>(widget)))
+    if ((m_window = qobject_cast<MainWindow*>(widget))) {
       break;
+    }
 
   if (m_window) {
     connect(this, &RpcListener::openedMolecule, m_window,

@@ -30,8 +30,9 @@ QWidget* ViewFactory::createView(const QString& view)
       auto bgColor = m_glWidget->renderer().scene().backgroundColor();
       newWidget->renderer().scene().setBackgroundColor(bgColor);
       return newWidget;
-    } else
+    } else {
       return new QtOpenGL::GLWidget;
+    }
   }
   return nullptr;
 }

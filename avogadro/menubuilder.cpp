@@ -272,11 +272,13 @@ int MenuBuilder::priorityGroup(const QString& path)
   QList<QAction*> items;
   int result(-1);
   foreach (const QString& key, m_menuActions.keys())
-    if (QString(key).replace("&", "").contains(path))
+    if (QString(key).replace("&", "").contains(path)) {
       items.append(m_menuActions[key]);
+    }
   foreach (QAction* action, items)
-    if (m_priorities[action] > result)
+    if (m_priorities[action] > result) {
       result = m_priorities[action];
+    }
   return result;
 }
 

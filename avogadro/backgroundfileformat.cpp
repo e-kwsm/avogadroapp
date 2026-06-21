@@ -65,10 +65,10 @@ void BackgroundFileFormat::read()
       }
     }
 
-    if (!isUTF16)
+    if (!isUTF16) {
       m_success =
         m_format->readFile(m_fileName.toLocal8Bit().data(), *m_molecule);
-    else {
+    } else {
       // write it to a temporary file and we'll read it back in
       // some formats (like the generic output) need a file
       // not just a string buffer
@@ -92,9 +92,10 @@ void BackgroundFileFormat::read()
         m_success =
           m_format->readFile(tempFileName.toLocal8Bit().data(), *m_molecule);
         tempFile.remove();
-      } else // try just reading the string
+      } else { // try just reading the string
         m_success =
           m_format->readString(text.toLocal8Bit().data(), *m_molecule);
+      }
     }
 
     if (!m_success)
