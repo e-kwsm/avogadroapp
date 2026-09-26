@@ -1334,9 +1334,9 @@ bool MainWindow::openFile(const QString& fileName, Io::FileFormat* reader)
   // after they start parsing it, so poll for a better identifier and refresh
   // the label once it changes. The timer is a child of the dialog, so it goes
   // away with it, and the guards cover a read finishing between timeouts.
-  QPointer<QProgressDialog> dialog(m_progressDialog);
-  QPointer<BackgroundFileFormat> backgroundReader(m_threadedReader);
-  auto* identifierTimer = new QTimer(m_progressDialog);
+  QPointer<QProgressDialog> dialog(m_progressDialog.get());
+  QPointer<BackgroundFileFormat> backgroundReader(m_threadedReader.get());
+  auto* identifierTimer = new QTimer(m_progressDialog.get());
   identifierTimer->setInterval(1000);
   connect(
     identifierTimer, &QTimer::timeout, this,
