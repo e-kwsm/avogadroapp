@@ -9,6 +9,7 @@
 #include <QtCore/QHash>
 #include <QtCore/QList>
 #include <QtCore/QStringList>
+#include <QtCore/QTimer>
 #include <QtCore/QVariantMap>
 #include <QtWidgets/QMainWindow>
 
